@@ -40,9 +40,10 @@ function init {
 
 function build_docker_image {
     mkdir $project_root
-    cp $jar_file $project_root
-    cp $script_root/scripts/start-app.sh $project_root
-    export JAR_FILE=`basename $jar_file`
+    cp $jar_file $project_root/app.jar
+    #export JAR_FILE=`basename $jar_file`
+    export JAR_FILE=app.jar
+    render_template $script_root/scripts/start-app.sh > $project_root/start-app.sh
     render_template $script_root/templates/Dockerfile > $project_root/Dockerfile
     cd $project_root
     docker build -t `echo $JAR_FILE|tr '[:upper:]' '[:lower:]'` .
