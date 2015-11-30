@@ -16,7 +16,8 @@ trap usage ERR EXIT
 
 function main {
     init "$@"
-    echo "Hest"
+    . $1
+    validate
 }
 
 function init {
@@ -24,6 +25,10 @@ function init {
     then
         error 1
     fi
+}
+
+function validate {
+    if [ -z "$APP_NAME" ] || [ -z "$BUILD_NO" ] || [ -z "$JAR_FILE" ]
 }
 
 error_array[1]="Argument must be a file"
