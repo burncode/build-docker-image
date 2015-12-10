@@ -48,8 +48,8 @@ function build_docker_image {
 }
 
 function push_docker_image {
-    docker tag -f $APP_NAME:$BUILD_NO localhost:5000/$APP_NAME:$BUILD_NO
-    docker push localhost:5000/$APP_NAME:$BUILD_NO
+    docker tag -f $APP_NAME:$BUILD_NO 172.21.14.12:5000/$APP_NAME:$BUILD_NO
+    docker push 172.21.14.12:5000/$APP_NAME:$BUILD_NO
 }
 
 function error {
